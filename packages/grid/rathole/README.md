@@ -12,7 +12,7 @@ Check with
 curl localhost:2001
 ```
 
-Build and run then second domain
+Build and run the second domain
 
 ```bash
 bash -c '\
@@ -50,8 +50,10 @@ Check with
 curl localhost:8001
 ```
 
-that should send a `GET` request to the `domain1`, and similarly for
+should send a `GET` request to the `domain1`, and
 
 ```bash
 curl localhost:8002
 ```
+
+should send a `GET` request to `domain2`
