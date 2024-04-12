@@ -31,7 +31,7 @@ Build the rathole image and run a rathole server
 ```bash
 bash -c '\
 docker build -f rathole.dockerfile . -t rathole && \
-docker run -it -p 8001:8001 -p 8002:8002 -p 2333:2333 -e MODE=server rathole'
+docker run --name rathole-server -it -p 8001:8001 -p 8002:8002 -p 2333:2333 -e MODE=server rathole'
 ```
 
 Run `curl localhost:8001` or `curl localhost:8002` should return `Recv failure: Connection reset by peer`
@@ -39,7 +39,7 @@ Run `curl localhost:8001` or `curl localhost:8002` should return `Recv failure: 
 Run a rathole client
 
 ```bash
-docker run -it -e MODE=client rathole
+docker run --name rathole-client -it -e MODE=client rathole
 ```
 
 The rathole server's logs should show `service=domain1: Listening at 0.0.0.0:8001` and `service=domain2: Listening at 0.0.0.0:8002` and the client's log should show `service=domain1: Control channel established` and `service=domain2: Control channel established`
