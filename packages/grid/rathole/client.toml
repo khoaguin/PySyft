@@ -1,0 +1,10 @@
+[client]
+remote_addr = "172.17.0.1:2333" # ID and port of the rathole server, i.e. the gateway
+
+[client.services.domain1]
+token = "domain1-specific-rathole-secret"  # Must be the same with the secret on the server to pass the validation
+local_addr = "localhost:1001" # The address of the service (nginx proxy) that needs to be forwarded
+
+[client.services.domain2]
+token = "domain2-specific-rathole-secret"
+local_addr = "localhost:1002"

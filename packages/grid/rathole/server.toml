@@ -1,0 +1,12 @@
+[server]
+bind_addr = "0.0.0.0:2333" # public open port
+
+# now is hard coded, but should be dynamically updated
+# based on the live domains it connect to
+[server.services.domain1]
+token = "domain1-specific-rathole-secret"  # Token that is used to authenticate the client for the service
+bind_addr = "0.0.0.0:8001"  # the port that exposes the client (i.e. domain) to the Internet
+
+[server.services.domain2]
+token = "domain2-specific-rathole-secret"
+bind_addr = "0.0.0.0:8002"
