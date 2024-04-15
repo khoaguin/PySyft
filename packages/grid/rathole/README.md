@@ -26,15 +26,19 @@ Check with
 curl localhost:2002
 ```
 
-Build the rathole image and run a rathole server
+Build the rathole image
 
 ```bash
-bash -c '\
-docker build -f rathole.dockerfile . -t rathole && \
-docker run --name rathole-server -it -p 8001:8001 -p 8002:8002 -p 2333:2333 -e MODE=server rathole'
+docker build -f rathole.dockerfile . -t rathole
 ```
 
-Run `curl localhost:8001` or `curl localhost:8002` should return `Recv failure: Connection reset by peer`
+Now, run a rathole server
+
+```bash
+docker run --name rathole-server -it -p 8001:8001 -p 8002:8002 -p 2333:2333 -e MODE=server rathole
+```
+
+The result should be something like `rathole::server: Listening at 0.0.0.0:2333`. If we run `curl localhost:8001` or `curl localhost:8002` should return `Recv failure: Connection reset by peer` since we don't have any rathole clients yet.
 
 Run a rathole client
 
