@@ -9,8 +9,10 @@ docker run --name domain1 -it -p 2001:1001 domain1'
 Check with
 
 ```bash
-curl localhost:2001
+curl 172.17.0.1:2001
 ```
+
+where `172.17.0.1` is the IP address of `http://host.docker.internal` (a special hostname that Docker provides to enable communication between containers and the host machine).
 
 Build and run the second domain
 
