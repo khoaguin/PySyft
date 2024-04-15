@@ -19,12 +19,16 @@ ENV MODE="client"
 COPY --from=build /rathole/target/release/rathole /app/rathole
 RUN apt update && apt install -y netcat-openbsd vim
 WORKDIR /app
-COPY ./start-client.sh /app/start-client.sh
-RUN chmod +x /app/start-client.sh
+
+# for the rathole server
 COPY ./start-server.sh /app/start-server.sh
 RUN chmod +x /app/start-server.sh
-COPY ./client.toml /app/client.toml
 COPY ./server.toml /app/server.toml
+
+# for the rathole client
+COPY ./start-client.sh /app/start-client.sh
+RUN chmod +x /app/start-client.sh
+COPY ./client.toml /app/client.toml
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 CMD ["sh", "-c", "/app/start-$MODE.sh"]
