@@ -1,5 +1,5 @@
 [client]
-remote_addr = "172.17.0.1:2333" # ID and port of the rathole server, i.e. the gateway
+remote_addr = "host.docker.internal:2333" # ID and port of the rathole server, i.e. the gateway
 
 [client.services.domain1]
 token = "domain1-specific-rathole-secret"  # Must be the same with the secret on the server to pass the validation
